@@ -1,0 +1,20 @@
+.app-sidebar .sidebar-header
+{
+    padding: 0 20px;
+    text-align: center;
+
+    .user-photo
+    {
+        border: 3px solid $bscolors-gray-300;
+        border-radius: 50%;
+        height: 96px;
+        padding: 3px;
+        width: 96px;
+    }
+
+    .username
+    {
+        padding: 10px 0;
+        white-space: nowrap;
+    }
+}
