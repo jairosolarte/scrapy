@@ -1,5 +1,6 @@
 import scrapy
 from urlparse import urlparse
+from scrapy.crawler import CrawlerProcess
 
 class BlogSpider(scrapy.Spider):
     name = 'blogspider'
@@ -126,3 +127,15 @@ class BlogSpider(scrapy.Spider):
 			yield response.follow(href, self.get_noticia)
 		for href in response.css('#jevents a.ev_link_row::attr(href)').extract()[:3]:
 			yield response.follow(href, self.get_noticia) 
+
+
+
+process = CrawlerProcess({
+    'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
+         'FEED_URI': 'file:///var/www/html/scrapy/json/noticias.json',
+})
+
+
+process.crawl(BlogSpider)
+process.start() # the script will block here until the crawling is finished
+

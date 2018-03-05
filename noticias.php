@@ -119,24 +119,26 @@
 
 
     $líneas = file('json/noticias.json');
-    $array = []; 
+    $array = array(); 
     
     foreach ($líneas as $num_línea => $línea) {
         $array[] = json_decode( $línea,true);
     }
     $texto = '';
     foreach($array as $ker => $item){
-      $img  = null; 
+      $img  = null;
       if(strlen($item['image'])> 0 ){
         $img = $item['image']; 
         if(strrpos($item['image'], $item['base'])<0){
           $img = $item['base'].$item['image']; 
         }
       }
+      $img = $item['base'].$item['image'];
 
       if(!is_null($img)){
         $img = '<img src="'.$img.'" alt="Smiley face" height="250" width="250">';
       }
+ 
       echo "<tr>".
       "<td>".$item['title']."<br>".$img."</td>".
       "<td>".$item['description']."</td>".

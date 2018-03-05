@@ -117,7 +117,7 @@
 
 
     $líneas = file('json/Departamentos.json');
-    $array = []; 
+    $array = array(); 
     
     foreach ($líneas as $num_línea => $línea) {
         $array[] = json_decode( $línea,true);
