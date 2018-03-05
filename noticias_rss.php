@@ -117,27 +117,22 @@
 <?php
 
 
-    $líneas = file('json/programas.json');
-    $array = []; 
+    $líneas = file('json/noticias_rss.json');
+    $json = file_get_contents('json/noticias_rss.json');
+    $json_data = json_decode($json, true);
+    $array = $json_data['noticia'];
     
-    foreach ($líneas as $num_línea => $línea) {
-        $array[] = json_decode( $línea,true);
-    }
     $texto = '';
     foreach($array as $ker => $item){
         $texto.= "<tr>".
-        "<td>".$item['nombreDepartamento']."</td>".
-        "<td>".$item['url']."</td>".
-        "<td>".implode(",",$item['snies']).
+        "<td>".$item['titular']."</td>".
+        "<td>".$item['fecha']."</td>".
+        "<td>".$item['link']."</td>".
         "</td>".
         "</tr>";
     }
     echo $texto; 
-    //var_dump($array); 
-    /*$json = file_get_contents('json/noticias.json');
-    //echo($json); 
-    $json_data = json_decode($json, true);
-    var_dump($json_data);*/
+
 ?>
 </table>
 </div>
