@@ -104,7 +104,7 @@
   </ol>
 </nav>
 <div class="container-fluid">
-<h2>Programas</h2>
+<h2>Departamento</h2>
 <div class="table-responsive">
 <table class="table">
 <thead>

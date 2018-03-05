@@ -104,7 +104,7 @@
   </ol>
 </nav>
 <div class="container-fluid">
-<h2>Programas</h2>
+<h2>Noticias</h2>
 <div class="table-responsive">
 <table class="table">
 <thead>
@@ -129,21 +129,23 @@
       $img  = null;
       if(strlen($item['image'])> 0 ){
         $img = $item['image']; 
-        if(strrpos($item['image'], $item['base'])<0){
+        $p = strrpos($item['image'], 'http');
+        if(!is_numeric($p)){
+        if(!$p){
           $img = $item['base'].$item['image']; 
         }
       }
-      $img = $item['base'].$item['image'];
-
+      }
+      
       if(!is_null($img)){
-        $img = '<img src="'.$img.'" alt="Smiley face" height="250" width="250">';
+        $img = '<img src="'.$img.'" alt="'.$item['image'].strrpos($item['image'], 'http').'" height="250" width="250">';
       }
  
       echo "<tr>".
       "<td>".$item['title']."<br>".$img."</td>".
       "<td>".$item['description']."</td>".
-      "<td>".$item['fecha']."<br>".$item['url']."</td>".
-      "<td>".$item['tipo']."</td>".
+      "<td>".$item['fecha']."<br>".$item['tipo']."</td>".
+      "<td>".$item['url']."</td>".
       "</tr>";
     }
     echo $texto; 
