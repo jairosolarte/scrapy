@@ -104,9 +104,41 @@
   </ol>
 </nav>
 <div class="container-fluid">
+<h2>Programas</h2>
+<div class="table-responsive">
+<table class="table">
+<thead>
+    <tr>
+      <th style="width:30%">Nombre</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+<?php
 
 
-</div>
+    $líneas = file('json/Departamentos.json');
+    $array = []; 
+    
+    foreach ($líneas as $num_línea => $línea) {
+        $array[] = json_decode( $línea,true);
+    }
+    $texto = '';
+    foreach($array as $ker => $item){
+        echo "<tr>".
+        "<td>".$item['nombreDepartamento']."</td>".
+        "<td>".$item['url']."</td>".        
+        "</tr>";
+    }
+    echo $texto; 
+    //var_dump($array); 
+    /*$json = file_get_contents('json/noticias.json');
+    //echo($json); 
+    $json_data = json_decode($json, true);
+    var_dump($json_data);*/
+?>
+
+</table>
+</div></div>
 
     </div>
   </div>
@@ -120,4 +152,3 @@
   <script src="./assets/js/admin4b.docs.js"></script>
 </body>
 </html>
-
